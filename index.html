@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Earn Task Site</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+      margin: 0;
+      padding: 0;
+      color: #fff;
+      text-align: center;
+    }
+    .container {
+      padding: 30px;
+    }
+    h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    .status-box {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 15px;
+      margin: 20px auto;
+      max-width: 350px;
+    }
+    .btn {
+      background: #fff;
+      color: #007BFF;
+      padding: 15px 25px;
+      border: none;
+      border-radius: 30px;
+      margin: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .btn:hover {
+      background: #007BFF;
+      color: white;
+    }
+    .ad-box {
+      margin-top: 30px;
+    }
+    .popup {
+      background: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      padding: 20px;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 10px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>আর্নিং ওয়েবসাইট</h1>
+    <div class="status-box">
+      <p>বর্তমান পয়েন্ট: <span id="points">0</span></p>
+      <p>রেফার সংখ্যা: <span id="referrals">0</span></p>
+    </div>
+
+    <button class="btn" onclick="earnTask()">টাস্ক করুন</button>
+    <button class="btn" onclick="refer()">রেফার করুন</button>
+    <button class="btn" onclick="withdraw()">উইথড্র দিন</button>
+
+    <div class="ad-box">
+      <h3>স্পন্সর:</h3>
+      <!-- Adsterra ad placeholder -->
+      <iframe src="https://example.com/ad" width="300" height="250" style="border:0;"></iframe>
+    </div>
+  </div>
+
+  <div class="popup" id="popupMessage"></div>
+
+  <script>
+    let points = 0;
+    let referrals = 0;
+
+    function earnTask() {
+      points += 10;
+      document.getElementById("points").innerText = points;
+      window.open("https://example.com/ad", "_blank"); // Adsterra link
+    }
+
+    function refer() {
+      referrals += 1;
+      document.getElementById("referrals").innerText = referrals;
+      showPopup("রেফার সফল হয়েছে!");
+    }
+
+    function withdraw() {
+      if (points >= 100 && referrals >= 5) {
+        showPopup("উইথড্র রিকুয়েস্ট গ্রহণ করা হয়েছে।");
+      } else {
+        showPopup("উইথড্র করার জন্য ১০০ পয়েন্ট এবং ৫ রেফার প্রয়োজন।");
